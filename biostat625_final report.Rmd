@@ -1,0 +1,142 @@
+---
+title: "Assessment of Key Risk Factors Driving Various Kind of Diseases on NHANES Dataset"
+author: "Group 3"
+date: "2022-12-15"
+header-includes:
+   - \setlength\parindent{24pt}
+output:
+  pdf_document: default
+  html_document: default
+---
+# Abstract
+
+# Background  
+  
+  **Stroke** is the fifth cause of death in the United States, according to the Heart Disease and Stroke Statistics 2020 report$^{[1]}$. Those who suffer from stroke, if luckily survived, may also suffer from expensive medical bills and even serious long-term disability$^{[2]}$.   Foreseeing the underlying risk factors of stroke is highly valuable to stroke screening and prevention. Stroke risk increases with age, but strokes can— and do—occur at any age.
+  
+  About 34.2 million people of all ages (about 1 in 10) have **diabetes** in the U.S, and roughly 7.3 million adults aged 18 and older are unaware that they have diabetes (just under 3% of all U.S. adults). The number of people who are diagnosed with diabetes *increases with age*. Factors that increase risks of diseases differ depending on the type of diabetes they  ultimately develop$^{[3]}$.  
+  
+  (traditional method...): 
+
+# Question of interest (*)  
+  Our questions of interest are as follows. Given factors differ between different diseases, we identify **Risk Factors** that lead to various kinds of diseases (diabetes and stroke) using feature selection methods. Then we predicting the risk of having various diseases (diabetes and stroke). To better deal with the possible computational challenge, we make a comparison between logistic regression and other machine learning algorithms to improve both efficiency and accuracy. Through our project, we can find models that would be used as references for future stroke & diabetes diseases prediction, identify significant features of risks for clinicians to better assist biomedical researches in healthcare industry. Since some of those selected features may be ambiguous, this research provides useful lifestyle suggestions to the general public.
+
+# Methods (*)
+
+## Dataset 
+The **N**ational **H**ealth and **N**utrition **E**xamination **S**urvey (**NHANES**) data (2013-2014) from the National Center for Health Statistics (NCHS) is used to develop machine learning models. This dataset holds an abundance of variables, ranging from *demographics, medical history, physical examinations, biochemistry* to *dietary* and *lifestyle questionnaires*, integrating to 5 csv files (Demographic, Diet, Examination, Questionnaire, and Lab Results). Known features contributing to stroke and diabetes, such as blood pressure, serum cholesterol level, alcohol consumption, weight, etc., are also included. Two years' data include a **sample size** of 200+ variables and 20000+ observations.
+Our response variables are (1)**DIQ010**: a question asking "Has a doctor or other health professional ever told you that you had diabetes?", which is used to identify diabetes; (2)**MCQ160F**: a question asking "Has a doctor or other health professional ever told you that you had a stroke?"  
+
+## Data preparation
+Before feature selection, we combined dataset using inner_join, excluded null and NaN in response variable (DIQ010), excluded non-numeric values, removed columns that have over 50% NaN, and replaced NaN with most frequent values. After that, we splitted the data into training set (80%), and test set (20%), both for response and predictors.
+
+## Statistical Analysis
+### Feature selection
+We used **XGBClassifier** for feature selection. XGBClassifier is a popular machine learning algorithm used for solving classification problems in various industries, such as credit scoring, fraud detection, and customer churn prediction. As an implementation of the gradient boosting decision tree algorithm, XGBClassifier combine many weak models (i.e. shallow decision trees) into a single strong model by using boosting, which is a type of ensemble learning, where multiple models are trained and their predictions are combined to create a more accurate and robust model.  
+
+(other feature selection)
+
+### Modelling  
+For model building, we used the following methods:  
+
+**Logistic Regression**: a type of supervised learning algorithm that is used to predict a binary outcome (i.e. a outcome that has two possible values, such as "yes" or "no") based on a given set of the independent variables, by using a logit function.  
+
+**Support Vector Machine (SVM)**: a powerful and flexible algorithm that can model complex, non-linear relationships between the input features and the outcome. works by finding the best hyperplane (i.e. a decision boundary) that can linearly separate the data points into different classes. SVM is able to handle high-dimensional data efficiently and is robust to overfitting.  
+
+**Random Forest**: is an ensemble learning method. Many individual decision trees work together to make predictions, and each decision tree in the random forest is trained on a random subset of the data. The final prediction is made by averaging the predictions of all the individual trees. Multiple decision trees in a random forest helps to improve the generalizability of the model and reduce overfitting. 
+
+**KNN**:  (...)
+
+**Gradient Boosting Decision Tree (GBDT)**: is an extension of the gradient boosting algorithm that uses decision trees as the base learners (i.e. the individual models that are combined to make the final prediction).  
+
+**Adaboost Classifier**: In AdaBoost, subsequent weak learners are tweaked in favor of those instances misclassified by previous classifiers. It is able to handle high-dimensional data and complex, non-linear relationships between the input features and the outcome.  
+
+**XGBoost (Extreme Gradient Boosting)**: uses boosting to combine many weak models (i.e. shallow decision trees) into a single strong model, making the algorithm almost 10 times  faster than existing gradient booster techniques.  
+
+**MLP**: (...)
+
+
+
+# Results and discussion (*)
+
+only diabetes (stroke, cardiovascular)
+2013-2014 data not updated
+time output
+
+
+
+
+```{r}
+
+```
+
+```{r plot}
+
+```
+
+
+
+## Model comparison
+
+accuracy and time
+
+
+## Current Findings
+- Oversampling with SMOTE seems solve the imbalance of the response variable of the dataset  
+
+- Random Forest seems to be the best one for diabetes prediction  
+
+- Age, and number of adults 60 years or older in household, tend to be the commonly important features selected by XGBoost(XGBClassifier) and random forest prediction model
+
+
+
+
+## Discussion
+### Limitation
+
+
+
+### Future work
+
+
+# Conclusion
+
+
+
+# References
+
+[1] Virani SS, Alonso A, Benjamin EJ, et al; on behalf of the American Heart Association Council on Epidemiology and Prevention Statistics Committee and Stroke Statistics Subcommittee. Heart disease and stroke statistics- 2020 update: a report from the American Heart Association.
+Circulation. 2020;141:e1-e458. doi: 10.1161/CIR.0000000000000757.  
+[2] Tsao CW, Aday AW, Almarzooq ZI, Alonso A, Beaton AZ, Bittencourt MS, et al. Heart Disease and Stroke Statistics—2022 Update: A Report From the American Heart Association. Circulation. 2022;145(8):e153–e639.  
+[3] Centers for Disease Control and Prevention. National Diabetes Statistics Report, 2020. Atlanta, GA: Centers for Disease Control and Prevention, U.S. Dept of Health and Human Services; 2020.
+
+
+
+# Contribution of group members:  
+
+
+**Jianxiong Shen**:  
+**Shushun Ren**:  
+**Zhiyi Sun**:  
+
+
+
+# Github link
+- <https://github.com/jianxion/625finalproject>.
+
+
+
+
+
+```{r}
+library(nhanesA)
+nhanesTables(data_group, year=1999)
+
+
+```
+
+
+
+
+
+
