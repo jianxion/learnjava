@@ -1,0 +1,17 @@
+Package: mypackate.11.1.22
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+RoxygenNote: 7.2.1
+Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+NeedsCompilation: no
+Packaged: 2022-11-04 19:56:39 UTC; jianxiongshen
+Built: R 4.1.2; ; 2022-11-04 19:56:45 UTC; unix
